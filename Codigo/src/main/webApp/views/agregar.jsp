@@ -6,11 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="aplicacion.service.InvitadoService" %>
+<%
+    String nombre = request.getParameter("nombre");
+    if (nombre != null) {
+        Servicio.agregarInvitado(nombre);
+    }
+    response.sendRedirect("lista.jsp");
+%>
 <html>
 <head>
-    <title>Title</title>
+    <title>Agregar Invitado</title>
 </head>
 <body>
-
 </body>
 </html>
