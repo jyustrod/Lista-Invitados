@@ -23,13 +23,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Conector MySQL -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
-        </dependency>
-
         <!-- JDBC -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -43,6 +36,13 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>11.2.3.jre11</version>
+        </dependency>
+
     </dependencies>
 
     <build>
