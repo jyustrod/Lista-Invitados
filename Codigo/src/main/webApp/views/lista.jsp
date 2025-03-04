@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.List" %>
 <%@ page import="aplicacion.model.Invitado" %>
 <html>
 <head>
@@ -16,14 +15,19 @@
 <body>
 <h2>Lista de Invitados</h2>
 <ul>
-    <% List<Invitado> invitados = Servicio.getInvitados();
+    <% List<Invitado> invitados = (List<Invitado>) request.getAttribute("invitados");
         for (Invitado inv : invitados) { %>
     <li><%= inv.getNombre() %>
-        <a href="eliminar.jsp?id=<%= inv.getId() %>">Eliminar</a>
+        <form action="${pageContext.request.contextPath}/invitados" method="post" style="display:inline;">
+            <input type="hidden" name="action" value="eliminar" />
+            <input type="hidden" name="id" value="<%= inv.getId() %>" />
+            <button type="submit">Eliminar</button>
+        </form>
     </li>
     <% } %>
 </ul>
-<form action="agregar.jsp" method="post">
+<form action="${pageContext.request.contextPath}/invitados" method="post">
+    <input type="hidden" name="action" value="agregar" />
     <input type="text" name="nombre" required />
     <button type="submit">Añadir Invitado</button>
 </form>

@@ -10,7 +10,7 @@
 <%
     String nombre = request.getParameter("nombre");
     if (nombre != null) {
-        Servicio.agregarInvitado(nombre);
+        InvitadoService.agregarInvitado(nombre);
     }
     response.sendRedirect("lista.jsp");
 %>

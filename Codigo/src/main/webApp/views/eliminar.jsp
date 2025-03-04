@@ -9,7 +9,7 @@
 <%@ page import="aplicacion.service.InvitadoService" %>
 <%
     int id = Integer.parseInt(request.getParameter("id"));
-    Servicio.eliminarInvitado(id);
+    InvitadoService.eliminarInvitado(id);
     response.sendRedirect("lista.jsp");
 %>
 <html>
