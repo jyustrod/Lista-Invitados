@@ -21,5 +21,5 @@ RUN mvn clean package
 EXPOSE 8080
 
 # Command to run the application using webapp-runner
-CMD ["java", "-jar", "target/dependency/webapp-runner.jar", "--port", "8080", "target/*.war"]
+CMD ["java", "-jar", "target/dependency/webapp-runner.jar", "--port", "8080", "target/Lista-Invitados.war"]
 
