@@ -3,14 +3,4 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
-    <servlet>
-        <servlet-name>InvitadoController</servlet-name>
-        <servlet-class>aplicacion.controller.InvitadoController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>InvitadoController</servlet-name>
-        <url-pattern>/invitados</url-pattern>
-    </servlet-mapping>
 </web-app>
