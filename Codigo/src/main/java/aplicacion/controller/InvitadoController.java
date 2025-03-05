@@ -26,13 +26,13 @@ public class InvitadoController extends HttpServlet {
 
         try {
             if ("agregar".equals(action)) {
-                request.getRequestDispatcher("/webApp/views/agregar.jsp").forward(request, response);
+                request.getRequestDispatcher("/webapp/views/agregar.jsp").forward(request, response);
             } else if ("eliminar".equals(action)) {
-                request.getRequestDispatcher("/webApp/views/eliminar.jsp").forward(request, response);
+                request.getRequestDispatcher("/webapp/views/eliminar.jsp").forward(request, response);
             } else {
                 List<Invitado> invitados = invitadoService.getInvitados();
                 request.setAttribute("invitados", invitados);
-                request.getRequestDispatcher("/webApp/views/lista.jsp").forward(request, response);
+                request.getRequestDispatcher("/webapp/views/lista.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error al obtener datos", e);
