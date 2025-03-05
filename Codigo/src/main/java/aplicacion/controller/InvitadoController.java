@@ -11,24 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet("/invitados")
 public class InvitadoController extends HttpServlet {
 
     private final InvitadoService invitadoService = new InvitadoService();
+    private static final Logger LOGGER = Logger.getLogger(InvitadoController.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            // Obtener la lista de invitados
-            List<Invitado> invitados = invitadoService.getInvitados();
-            request.setAttribute("invitados", invitados);
+        String action = request.getParameter("action");
 
-            // Redirigir a la vista lista.jsp
-            request.getRequestDispatcher("/views/lista.jsp").forward(request, response);
+        try {
+            if ("agregar".equals(action)) {
+                request.getRequestDispatcher("/views/agregar.jsp").forward(request, response);
+            } else if ("eliminar".equals(action)) {
+                request.getRequestDispatcher("/views/eliminar.jsp").forward(request, response);
+            } else {
+                List<Invitado> invitados = invitadoService.getInvitados();
+                request.setAttribute("invitados", invitados);
+                request.getRequestDispatcher("/views/lista.jsp").forward(request, response);
+            }
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al obtener la lista de invitados");
+            LOGGER.log(Level.SEVERE, "Error al obtener datos", e);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al obtener datos");
         }
     }
 
@@ -38,23 +46,22 @@ public class InvitadoController extends HttpServlet {
 
         try {
             if ("agregar".equals(action)) {
-                // Agregar un nuevo invitado
                 String nombre = request.getParameter("nombre");
+                if (nombre == null || nombre.trim().isEmpty()) {
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "El nombre no puede estar vacío");
+                    return;
+                }
                 invitadoService.agregarInvitado(nombre);
             } else if ("eliminar".equals(action)) {
-                // Eliminar un invitado
                 int id = Integer.parseInt(request.getParameter("id"));
                 invitadoService.eliminarInvitado(id);
             }
-
-            // Redirigir a la lista de invitados después de la acción
             response.sendRedirect(request.getContextPath() + "/invitados");
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al procesar la solicitud");
+            LOGGER.log(Level.SEVERE, "Error en la operación", e);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error en la operación");
         } catch (NumberFormatException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID de invitado no válido");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido");
         }
     }
 }
