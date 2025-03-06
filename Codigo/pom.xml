@@ -44,20 +44,8 @@
             <version>11.2.3.jre11</version>
         </dependency>
 
-        <!-- Cliente para Azure Key Vault -->
-        <dependency>
-            <groupId>com.azure</groupId>
-            <artifactId>azure-security-keyvault-secrets</artifactId>
-            <version>4.6.1</version>
-        </dependency>
-        <!-- Cliente para la autenticación con Managed Identity -->
-        <dependency>
-            <groupId>com.azure</groupId>
-            <artifactId>azure-identity</artifactId>
-            <version>1.8.0</version>
-        </dependency>
-        <!-- Otras dependencias que necesites, por ejemplo para la conexión a la BD -->
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
