@@ -5,12 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBD {
-    private static final String URL = "jdbc:sqlserver://gestioninvitados.database.windows.net:1433;"
-            + "databaseName=InvitadosBD00;encrypt=true;trustServerCertificate=false;loginTimeout=30;";
-    private static final String USUARIO = "UnaxDespierta";
-    private static final String CONTRASEÑA = "mmFySMi5oHx2wG$Sz!$8^&Bg2";
 
+    // Define la URL de conexión a tu base de datos
+    private static final String DB_URL = "jdbc:mysql://<tu-servidor>.database.windows.net:3306/tu_base";
+
+    /**
+     * Establece la conexión a la base de datos usando las credenciales de Key Vault.
+     *
+     * @return Objeto Connection.
+     * @throws SQLException si falla la conexión.
+     */
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USUARIO, CONTRASEÑA);
+        // Obtiene las credenciales de Key Vault
+        String dbUser = KeyVault.getSecret("DB_USER");
+        String dbPassword = KeyVault.getSecret("DB_PASSWORD");
+
+        // Crea y devuelve la conexión
+        return DriverManager.getConnection(DB_URL, dbUser, dbPassword);
     }
 }
