@@ -33,7 +33,7 @@ Lista-Invitados/
 │       ├── model/Invitado.java
 │       └── service/InvitadoService.java
 └── src/main/webapp
-└── views/{lista.jsp, agregar.jsp, eliminar.jsp}
+    └── views/{lista.jsp, agregar.jsp, eliminar.jsp}
 ```
 
 ---
@@ -53,7 +53,7 @@ Este comando **compila** el proyecto y **lo ejecuta** directamente en un servido
 - **Java** ☕
 - **JSP** 🖥️
 - **Maven** 🛠️
-- **SQL Server/MySQL** (ajusta según tu servicio de base de datos) 🗄️
+- **MySQL** 🗄️
 
 ---
 
