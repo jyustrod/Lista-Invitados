@@ -2,7 +2,6 @@ package aplicacion.controller;
 
 import aplicacion.service.InvitadoService;
 import aplicacion.model.Invitado;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,13 +25,13 @@ public class InvitadoController extends HttpServlet {
 
         try {
             if ("agregar".equals(action)) {
-                request.getRequestDispatcher("/webapp/views/agregar.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/agregar.jsp").forward(request, response);
             } else if ("eliminar".equals(action)) {
-                request.getRequestDispatcher("/webapp/views/eliminar.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/eliminar.jsp").forward(request, response);
             } else {
                 List<Invitado> invitados = invitadoService.getInvitados();
                 request.setAttribute("invitados", invitados);
-                request.getRequestDispatcher("/webapp/views/lista.jsp").forward(request, response);
+                request.getRequestDispatcher("/views/lista.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error al obtener datos", e);
