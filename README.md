@@ -1,3 +1,5 @@
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/jyustrod/Lista-Invitados.git)
+[![Deploy en Render](https://img.shields.io/badge/Render-Deploy-blue?logo=render)](https://lista-invitados-ixx9.onrender.com)
 # 🎉 Lista de Invitados
 
 Una **aplicación web** para gestionar la lista de invitados a eventos como **conferencias, bodas o seminarios**.  
@@ -64,3 +66,4 @@ Este comando **compila** el proyecto y **lo ejecuta** directamente en un servido
 ---
 ## 📄 Licencia
 Distribuido bajo la Licencia Apache-2.0.
+
